@@ -29,7 +29,7 @@ def get_albums(token, artist_id):
 
 if __name__ == "__main__":
     token = get_access_token()  # Retrieve token
-    artist_name = "Kanye West"
+    artist_name = input("Enter artist's name: ")
     artist_id = get_artist_id(token, artist_name)
     albums = get_albums(token, artist_id)
     print(albums)
