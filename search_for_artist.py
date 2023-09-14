@@ -29,21 +29,24 @@ def get_artist_info(token, artist_name):
 
 if __name__ == "__main__":
     token = get_access_token()
-    
+
     while True:
-        search_query = input("Enter the name of the artist you're looking for: ")
-        
-        if search_query.lower() == "exit":
+        print("1: Search for an artist")
+        print("2: Quit")
+        choice = input("Enter your choice (1/2): ")
+
+        if choice == "2":
             print("Exiting program.")
             break
+        elif choice == "1":
+            search_query = input("\nEnter the name of the artist you're looking for: ")
+            artist_info = get_artist_info(token, search_query)
 
-        artist_info = get_artist_info(token, search_query)
-
-        print(f"Artist: {artist_info['name']}")
-        print(f"ID: {artist_info['id']}")
-        print(f"Popularity: {artist_info['popularity']}")
-        print(f"Genres: {artist_info['genres']}")
-        print(f"Spotify URL: {artist_info['spotify_url']}")
-        print(f"Followers: {format(artist_info['followers'], ',')}")
-        print(f"Image URL: {artist_info['image_url']}")
-        print("--------------------")
+            print(f"Artist: {artist_info['name']}")
+            print(f"ID: {artist_info['id']}")
+            print(f"Popularity: {artist_info['popularity']}")
+            print(f"Genres: {artist_info['genres']}")
+            print(f"Spotify URL: {artist_info['spotify_url']}")
+            print(f"Followers: {format(artist_info['followers'], ',')}")
+            print(f"Image URL: {artist_info['image_url']}")
+            print("--------------------\n")
