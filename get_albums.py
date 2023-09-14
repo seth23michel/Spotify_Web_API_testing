@@ -15,17 +15,18 @@ def get_artist_id(token, artist_name):
     result = r.json()
     return result['artists']['items'][0]['id']
 
-
 def get_albums(token, artist_id):
     albums_url = f"https://api.spotify.com/v1/artists/{artist_id}/albums"
     headers = {
         "Authorization": f"Bearer {token}"
     }
-    r = requests.get(albums_url, headers=headers)
+    params = {
+        "album_type": "album"  # Fetch only albums, not singles or compilations
+    }
+    r = requests.get(albums_url, headers=headers, params=params)
     result = r.json()
     albums = [album['name'] for album in result['items']]
     return albums
-
 
 if __name__ == "__main__":
     token = get_access_token()  # Retrieve token
